@@ -52,7 +52,6 @@ function App() {
         <h2>Add product</h2>
         <div style={{ marginBottom: '10px' }}>
           <select {...formik.getFieldProps('categoryId')}>
-            <option disabled>Categories</option>
             {
               categories?.map((category) => (
                 <option value={category.id} key={category.id}>{category.name}</option>
@@ -62,19 +61,34 @@ function App() {
         </div>
         <div style={{ marginBottom: '10px' }}>
           <input type='text' name='name' placeholder='name...' {...formik.getFieldProps('name')} />
+          {formik.touched.name && formik.errors.name ? (
+            <p style={{color: 'red'}}>{formik.errors.name}</p>
+          ) : null}
         </div>
         <div style={{ marginBottom: '10px' }}>
           <input type='number' name='unitPrice' placeholder='unit price' {...formik.getFieldProps('unitPrice')} />
+          {formik.touched.unitPrice && formik.errors.unitPrice ? (
+            <p style={{color: 'red'}}>{formik.errors.unitPrice}</p>
+          ) : null}
         </div>
         <div style={{ marginBottom: '10px' }}>
           <input type='number' name='unitsInStock' placeholder='unitsInStock' {...formik.getFieldProps('unitsInStock')} />
+          {formik.touched.unitsInStock && formik.errors.unitsInStock ? (
+            <p style={{color: 'red'}}>{formik.errors.unitsInStock}</p>
+          ) : null}
         </div>
         <div style={{ marginBottom: '10px' }}>
           <label for='discounted' >Discounted</label>
           <input type='checkBox' id='discounted' name='discounted' placeholder='quantityPerUnit' {...formik.getFieldProps('discounted')} />
+          {formik.touched.discounted && formik.errors.discounted ? (
+            <p style={{color: 'red'}}>{formik.errors.discounted}</p>
+          ) : null}
         </div>
         <div style={{ marginBottom: '10px' }}>
           <input type='text' name='quantityPerUnit' placeholder='quantityPerUnit' {...formik.getFieldProps('quantityPerUnit')} />
+          {formik.touched.quantityPerUnit && formik.errors.quantityPerUnit ? (
+            <p style={{color: 'red'}}>{formik.errors.quantityPerUnit}</p>
+          ) : null}
         </div>
         <button type='submit'>Add</button>
       </form>
